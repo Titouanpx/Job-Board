@@ -1,4 +1,4 @@
-CREATE DATABASE jobboardbdd;
+CREATE DATABASE jobboarddb;
 
 CREATE TABLE advertisements 
 (
