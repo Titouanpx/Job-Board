@@ -1,6 +1,7 @@
 import mariadb
 import sys
 import sqlite3
+import requests
 
 
 def get_mdp_db():
@@ -26,7 +27,7 @@ def connect():
 
 cursor = connect().cursor()
 
-cursor.execute("SELECT firstname,lastname FROM people")
+cursor.execute("SELECT title,description FROM advertisements")
 
 print(f"{cursor.fetchone()}")
 
