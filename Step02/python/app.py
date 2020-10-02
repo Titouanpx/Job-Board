@@ -3,6 +3,11 @@ import sys
 import sqlite3
 import requests
 
+from flask import *
+import os
+
+import json
+
 
 def get_mdp_db():
     with open("../mdp_bdd.txt", "r") as f:
@@ -27,9 +32,28 @@ def connect():
 
 cursor = connect().cursor()
 
-cursor.execute("SELECT title,description FROM advertisements")
 
-print(f"{cursor.fetchone()}")
+app = Flask(__name__)
+
+"""
+@app.route('/')
+def index():
+    return "Hello World"
+"""
+
+
+@app.route('/')
+def index():
+    cursor.execute("SELECT title,description FROM advertisements")
+
+    fetchall_data = cursor.fetchall()
+    print(fetchall_data)
+
+    return render_template('index.html', rows=fetchall_data)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 """
 def get_name(database_file, person_id):

@@ -2,3 +2,4 @@ watchOutList.txt
 mdp_bdd.txt
 Step01/python/.idea/
 Step02/python/.idea/
+Step02/python/__pycache__/
