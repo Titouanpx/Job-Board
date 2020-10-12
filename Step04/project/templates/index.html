@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <title>Job Board</title>
+</head>
+<body>
+    <header class="text-white text-center p-3 mb-3" id="header">
+        <div class="d-inline-block">
+            <h1>Job Board</h1>
+        </div>
+    </header>
+
+    <div class="container container-fluid" id="maindiv">
+        <div class="row">
+            {% for row in rows %}
+                <div class="card col-12 col-sm-6 col-lg-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ row[1] }}</h5>
+                        <p class="card-text">{{ row[2] }}</p>
+                        <a href="#" class="card-link btnLearnMore" data-id="{{ row[0] }}">Learn more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="card m-3" id="learnmorediv">
+        <div class="card-body">
+            <div id="learnmoredatabase">
+                <!--<h5>Title</h5>
+                <p>Description</p>
+                <p>wage</p>
+                <p>place</p>
+                <p>working time</p>
+                <p>creator of the ad</p>
+                <p>Compagny</p>-->
+            </div>
+            <a href="#" class="card-link" id="btnretour">Retour</a>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='jquery.js') }}"></script>
+</body>
+</html>

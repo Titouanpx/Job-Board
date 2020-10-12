@@ -2,5 +2,8 @@ watchOutList.txt
 mdp_bdd.txt
 reviewlist.txt
 Step01/python/.idea/
-Step02/project/.idea/
-Step02/project/__pycache__/
+Step02/python/.idea/
+Step03/project/.idea/
+Step03/project/__pycache__/
+Step04/project/.idea/
+Step04/project/__pycache__/

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <title>Job Board</title>
+</head>
+<body>
+    <header class="text-white text-center p-3 mb-3" id="header">
+        <div class="d-inline-block">
+            <h1>Job Board</h1>
+        </div>
+    </header>
+
+    <div class="container container-fluid">
+        <div class="row">
+            <!--{% for row in rows %}
+                <div class="ad col-12 col-sm-6 border">
+                    <h2>{{ row[0] }}</h2>
+                    <p class="description">{{ row[1] }}</p>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="mb-3 ">Learn more</button>
+                    </div>
+                </div>
+            {% endfor %}-->
+
+            {% for row in rows %}
+                <div class="card col-12 col-sm-6 col-lg-4">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ row[0] }}</h5>
+                    <p class="card-text">{{ row[1] }}</p>
+                    <a href="#" class="card-link">Learn more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+    
+</body>
+</html>
