@@ -16,7 +16,7 @@ CREATE TABLE jobboarddb.people
 	lastname VARCHAR(255), 
 	email VARCHAR(255) UNIQUE,
 	phone VARCHAR(255),
-	identifiant VARCHAR(255) UNIQUE, 
+	pseudonym VARCHAR(255) UNIQUE, 
 	password VARCHAR(255), 
 	role VARCHAR(255)
 );
@@ -35,11 +35,6 @@ ALTER TABLE jobboarddb.advertisements
 ADD id_people INT;
 ALTER TABLE jobboarddb.advertisements
 ADD FOREIGN KEY (id_people) REFERENCES people(id); 
-
-ALTER TABLE jobboarddb.advertisements
-ADD id_companies INT;
-ALTER TABLE jobboarddb.advertisements
-ADD FOREIGN KEY (id_companies) REFERENCES companies(id); 
 
 ALTER TABLE jobboarddb.jobApplication
 ADD id_ad INT;
@@ -68,17 +63,17 @@ VALUES ('2', 'Samsic', "Cleaning company");
 INSERT INTO jobboarddb.companies (id, name, description)
 VALUES ('3', 'BMC', "Engineering company");
 
-INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, identifiant, password, role, id_company)
+INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, pseudonym, password, role, id_company)
 VALUES ('1', 'Titouan', 'Proux', 'titouan@gmail.com', '0712345678', 'titouanpx', 'titouanmdp', 'admin', '1');
-INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, identifiant, password, role, id_company)
+INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, pseudonym, password, role, id_company)
 VALUES ('2', 'Georges', 'Dupont', 'georges@free.fr', '0600305078', 'gdupont', 'mdpgeorges', 'in charge', '2');
-INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, identifiant, password, role)
+INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, pseudonym, password, role)
 VALUES ('3', 'Bob', 'Durant', 'bobd@gmail.com', '0102030405', 'bobdrt', 'bobmdpbob', 'applying');
-INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, identifiant, password, role, id_company)
+INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, pseudonym, password, role, id_company)
 VALUES ('4', 'Joe', 'Robert', 'joe@gmail.com', '0032211000', 'joerobert', 'joemdr', 'in charge', '3');
-INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, identifiant, password, role)
+INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, pseudonym, password, role)
 VALUES ('5', 'Marius', 'Crusson', 'mamacru@gmail.com', '0105101520', 'marius15', 'mdpmarius15', 'applying');
-INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, identifiant, password, role)
+INSERT INTO jobboarddb.people (id, firstname, lastname, email, phone, pseudonym, password, role)
 VALUES ('6', 'Camille', 'Didier', 'cadi@gmail.com', '0650505080', 'cadi', 'cadimdp', 'applying');
 
 INSERT INTO jobboarddb.advertisements (id, title, description, wage, place, working_time, id_people, id_company)
