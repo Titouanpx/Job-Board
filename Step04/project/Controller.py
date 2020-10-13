@@ -26,6 +26,15 @@ def connect():
 cursor = connect().cursor()
 
 
+def create_new_ad(title, descr, wage, place, work_time, idpeople, idcompany):
+    cursor.execute("INSERT INTO advertisements (title, description, wage, place, working_time, id_people, id_company)"
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s)", (title, descr, wage, place, work_time, idpeople, idcompany))
+
+    #cursor.commit()
+
+    print("record created")
+
+
 def get_ad():
     cursor.execute("SELECT * FROM advertisements")
     fetchall_data = cursor.fetchall()
@@ -59,5 +68,23 @@ def get_ad_by_id_foreign_keys(ad_id):
     lstData[6] = creator[1]
     lstData[7] = company[1]
     data = tuple(lstData)
-
     return data
+
+
+def update_ad(title, descr, wage, place, work_time, idpeople, idcompany):
+    cursor.execute("UPDATE advertisements "
+                   "Set title =" + title + ", description =" + descr + ", wage =" + wage + ", place =" + place +
+                   ", working_time =" + work_time + ", id_people =" + idpeople + ", id_company =" + idcompany)
+
+    #cursor.commit()
+
+    print("record updated")
+
+
+def delete_ad(id):
+    cursor.execute("DELETE FROM advertisements WHERE id = %s", id,)
+
+    # cursor.commit()
+
+    print("record deleted")
+
