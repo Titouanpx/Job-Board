@@ -1,21 +1,21 @@
 import mariadb
 import sys
 
-
-def get_mdp_db():
-    with open("../mdp_bdd.txt", "r") as f:
-        lines = f.readlines()
-        return lines[0].strip()
+from configparser import ConfigParser
 
 
 def connect():
     try:
+        config_object = ConfigParser()
+        config_object.read(".env")
+        databaseinfo = config_object["DATABASEINFO"]
+
         connection = mariadb.connect(
-            user="root",
-            password=get_mdp_db(),
-            host="127.0.0.1",
-            port=3306,
-            database="jobboarddb"
+            user=databaseinfo["user"],
+            password=databaseinfo["password"],
+            host=databaseinfo["host"],
+            port=int(databaseinfo["port"]),
+            database=databaseinfo["databasename"]
         )
         return connection
     except mariadb.Error as e:
@@ -28,8 +28,9 @@ cursor = connect.cursor()
 
 
 def create_new_ad(id, title, descr, wage, place, work_time, idpeople, idcompany):
-    cursor.execute("INSERT INTO advertisements (id, title, description, wage, place, working_time, id_people, id_company)"
-                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (id, title, descr, wage, place, work_time, idpeople, idcompany))
+    cursor.execute(
+        "INSERT INTO advertisements (id, title, description, wage, place, working_time, id_people, id_company)"
+        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (id, title, descr, wage, place, work_time, idpeople, idcompany))
     connect.commit()
 
     print("ad created")
