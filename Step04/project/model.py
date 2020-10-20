@@ -49,4 +49,30 @@ def model_get_ad_by_id(ad_id):
     return fetchone_data
 
 
+def model_get_people_by_id(people_id):
+    cursor.execute("SELECT * FROM people WHERE id=?", (people_id,))
+    fetchone_data = cursor.fetchone()
+    return fetchone_data
+
+
+def model_get_company_by_id(company_id):
+    cursor.execute("SELECT * FROM companies WHERE id=?", (company_id,))
+    fetchone_data = cursor.fetchone()
+    return fetchone_data
+
+def model_update_ad(id, title, descr, wage, place, work_time, idpeople, idcompany):
+    cursor.execute('UPDATE advertisements '
+                   'SET title = "' + title + '", description = "' + descr + '", wage = "' + wage + '", place = "' +
+                   place + '", working_time = "' + work_time + '" , id_people = "' + idpeople + '", id_company ="' +
+                   idcompany + '" WHERE id = ' + id)
+    connect.commit()
+
+    print("ad updated")
+
+def model_delete_ad(id):
+    cursor.execute('DELETE FROM advertisements WHERE id = ' + str(id))
+    connect.commit()
+
+    print("ad deleted")
+
 

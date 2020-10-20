@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    data = get_ad()
+    data = get_ads()
 
     return render_template('index.html', rows=data)
 
