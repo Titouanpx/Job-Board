@@ -11,7 +11,7 @@ def get_ads():
 
 
 def get_ad_by_id(ad_id):
-    ad = model_get_ad_by_id()
+    ad = model_get_ad_by_id(ad_id)
     return ad
 
 
